@@ -1,10 +1,10 @@
 package com.golf.business.accessor.filter;
 
 import com.golf.business.BaseFilter;
-import com.golf.domain.player.Player;
+import com.golf.domain.player.Player1;
 
 
-public class PlayerFilter extends BaseFilter<Player> {
+public class PlayerFilter extends BaseFilter<Player1> {
 	
 	public static final String NAME = "name";
 	

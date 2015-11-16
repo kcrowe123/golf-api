@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.golf.business.Accessor;
 import com.golf.business.Filter;
-import com.golf.domain.player.Player;
+import com.golf.domain.player.Player1;
 import com.golf.domain.tournament.Tournament;
 import com.google.common.collect.Lists;
 
@@ -14,16 +14,16 @@ import com.google.common.collect.Lists;
  * Accessor for Player domain objects.
  */
 @Service("playerAccessor")
-public class PlayerAccessor implements Accessor<Player> {
+public class PlayerAccessor implements Accessor<Player1> {
 
 	@Override
-	public List<Player> find(Filter<Player> filter) {
+	public List<Player1> find(Filter<Player1> filter) {
 		
-		return Lists.newArrayList(new Player(1L, "Player 1"), new Player(2L, "Player 2"), new Player(3L, "Player 3"));
+		return Lists.newArrayList(new Player1(1L, "Player 1"), new Player1(2L, "Player 2"), new Player1(3L, "Player 3"));
 	}
 
 	@Override
-	public Player load(Long id) {
+	public Player1 load(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
