@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.golf.business.Accessor;
 import com.golf.business.Filter;
-import com.golf.domain.tournament.Player;
+import com.golf.domain.player.Player;
 import com.golf.domain.tournament.Tournament;
 import com.google.common.collect.Lists;
 

@@ -1,7 +1,7 @@
 package com.golf.business.accessor.filter;
 
 import com.golf.business.BaseFilter;
-import com.golf.domain.tournament.Player;
+import com.golf.domain.player.Player;
 
 
 public class PlayerFilter extends BaseFilter<Player> {

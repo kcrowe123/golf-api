@@ -12,7 +12,7 @@ import com.golf.business.Accessor;
 import com.golf.business.BaseFilter;
 import com.golf.business.accessor.filter.PlayerFilter;
 import com.golf.business.accessor.filter.TournamentFilter;
-import com.golf.domain.tournament.Player;
+import com.golf.domain.player.Player;
 
 @RestController
 public class PlayerController {
