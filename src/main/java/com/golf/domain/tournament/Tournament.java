@@ -1,14 +1,12 @@
 package com.golf.domain.tournament;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +16,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import com.golf.domain.day.Day;
 import com.golf.domain.flight.Flight;
 import com.golf.domain.scorecard.Scorecard;
@@ -26,23 +26,29 @@ import com.golf.domain.scorecard.Scorecard;
 
 @Entity
 @Table(name="TOURNAMENT")
-public class Tournament
+public class Tournament extends com.golf.domain.Entity implements Serializable 
 {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name = "TOURNAMENT_ID", nullable = false)
-	private long id;
+	private Long id;
 	
 	@Column(name = "TOURNAMENT_NAME", unique = true)
 	private String name;
 	
+    //@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name = "TOURNAMENT_ID", nullable = false, updatable = false)
 	private List<Day> days;
 	
 
-	public long getId()
+	public Long getId()
 	{
 		return id;
 	}
@@ -217,16 +223,26 @@ public class Tournament
 //		return player.getDateOfBirth().before(seniorEligible);	
 //	}
 	
-	public boolean equals(Object obj)
-	{
-		Tournament tournament = (Tournament) obj;
-		
-		return this.getId() == tournament.getId() && this.name.equals(tournament.getName());
-	}
 
-	public String toString()
-	{
-		return this.getName();
-	}
+    @Override
+    protected void addEntityFieldsToEqualsBuilder(EqualsBuilder builder, Object obj) {
+    	Tournament rhs = (Tournament) obj;
+        builder.append(name, rhs.name);
+    }
+
+    @Override
+    protected int hashCodeMultiplier() {
+        return 7;
+    }
+
+    @Override
+    protected void addEntityFieldsToHashCodeBuilder(HashCodeBuilder builder) {
+        builder.append(name);
+    }
+
+    @Override
+    protected void addEntityFieldsToToStringBuilder(ToStringBuilder builder) {
+        builder.append("name", name);
+    }
 	
 }
