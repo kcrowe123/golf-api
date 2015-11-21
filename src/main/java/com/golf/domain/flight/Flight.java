@@ -1,49 +1,52 @@
 package com.golf.domain.flight;
 
+
 import java.util.Set;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-import com.golf.domain.Entity;
+import com.golf.domain.scorecard.Scorecard;
 
-/**
- * Represents a Flight
- * 
- * @author Z900247
- * 
- * @hibernate.class  table="flight"
- */
-public class Flight extends Entity
+
+@Entity
+@Table(name="FLIGHT")
+public class Flight
 {
+	@Id
+	@GeneratedValue
+	@Column(name = "FLIGHT_ID", nullable = false)
+	private long id;
+	
+	@Column(name="FLIGHT_NM", nullable = false)
 	private String name;
 	
-	private Set scorecards;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "FLIGHT_SCORECARD", joinColumns = { @JoinColumn(name = "FLIGHT_ID", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "SCORECARD_ID", nullable = false, updatable = false) })
+	private Set<Scorecard> scorecards;
 	
 	public Flight()
 	{
 		
 	}
 	
-	/**
-	 * The getter method for this Flight's identifier.
-	 * 
-	 * @hibernate.id column = "FLIGHT_ID" generator-class="native"
-	 */
-	public Long getId()
+	public long getId()
 	{
-		return super.getId();
+		return id;
 	}
 	
-	/**
-	 * @return
-	 * @hibernate.property
-	 *  column = "FLIGHT_NM"
-	 * @hibernate.column
-	 *  name="FLIGHT_NM"
-	 *  not-null="true"
-	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
 	public String getName()
 	{
 		return name;
@@ -53,51 +56,16 @@ public class Flight extends Entity
 	{
 		this.name = name;
 	}
-	
-	/**
-	 * @return
-	 * @hibernate.set
-	 * table="FLIGHT_SCORECARD"
-	 * lazy="true"
-	 * @hibernate.collection-key
-	 * column="FLIGHT_ID"
-	 * @hibernate.collection-many-to-many
-	 * column="SCORECARD_ID"
-	 * class="com.golf.domain.scorecard.Scorecard"
-	 */
-	public Set getScorecards()
+
+	public Set<Scorecard> getScorecards()
 	{
 		return scorecards;
 	}
 
-	public void setScorecards(Set scorecards)
+	public void setScorecards(Set<Scorecard> scorecards)
 	{
 		this.scorecards = scorecards;
 	}
 
-	@Override
-	protected void addEntityFieldsToEqualsBuilder(EqualsBuilder builder,
-			Object obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void addEntityFieldsToHashCodeBuilder(HashCodeBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void addEntityFieldsToToStringBuilder(ToStringBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected int hashCodeMultiplier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 }

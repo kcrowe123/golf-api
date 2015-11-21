@@ -3,30 +3,59 @@ package com.golf.domain.player;
 import java.util.Date;
 import java.util.Set;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+
+
 
 import com.golf.domain.scorecard.Scorecard;
-import com.golf.domain.Entity;
 
-/**
- * Represents a Player
- * 
- * @author Z900247
- * 
- * @hibernate.class  table="player"
- */
-public class Player extends Entity
+
+@Entity
+@Table(name="Player")
+public class Player 
 {
+	@Id
+	@GeneratedValue
+	@Column(name = "PLAYER_ID", nullable = false)
+	private long id;
+	
+	@Column(name = "FIRST_NAME")
 	private String firstName;
+	
+	@Column(name = "LAST_NAME")
 	private String lastName;
+	
+	@Column(name="SUFFIX")
 	private String suffix;
+	
+	@AttributeOverrides({
+    @AttributeOverride(name = "street", column = @Column(name = "STREET")),
+    @AttributeOverride(name = "city", column = @Column(name = "CITY")),
+    @AttributeOverride(name = "state", column = @Column(name = "STATE")),
+    @AttributeOverride(name = "zipCode", column = @Column(name = "ZIP_CODE")) })
 	private Address address;
+	
+	@Column(name="PHONE_NUMBER")
 	private String phoneNumber;
+	
+	@Column(name="EMAIL_ADDRESS")
 	private String emailAddress;
+	
+	@Column(name="DATE_OF_BIRTH")
 	private Date dateOfBirth;
-	private Set scorecards;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "player")
+	private Set<Scorecard> scorecards;
 
 	public Player()
 	{
@@ -44,23 +73,13 @@ public class Player extends Entity
 		this.emailAddress = emailAddress;
 	}
 	
-	/**
-	 * The getter method for this Player's identifier.
-	 * 
-	 * @hibernate.id column = "PLAYER_ID" generator-class="native"
-	 */
-	public Long getId()
+
+	public long getId()
 	{
-		return super.getId();
+		return id;
 	}
 
-	/**
-	 * The getter method for this Player's firstName
-	 * 
-	 * @return firstName
-	 * 
-	 * @hibernate.property column = "FIRST_NAME"
-	 */
+	
 	public String getFirstName()
 	{
 		return firstName;
@@ -74,13 +93,7 @@ public class Player extends Entity
 		this.firstName = firstName;
 	}
 
-	/**
-	 * The getter method for this Player's lastName
-	 * 
-	 * @return lastName
-	 * 
-	 * @hibernate.property column = "LAST_NAME"
-	 */
+	
 	public String getLastName()
 	{
 		return lastName;
@@ -94,13 +107,7 @@ public class Player extends Entity
 		this.lastName = lastName;
 	}
 
-	/**
-	 * The getter method for this Player's suffix
-	 * 
-	 * @return suffix
-	 * 
-	 * @hibernate.property column = "SUFFIX"
-	 */
+	
 	public String getSuffix()
 	{
 		return suffix;
@@ -114,13 +121,7 @@ public class Player extends Entity
 		this.suffix = suffix;
 	}
 
-	/**
-	 * The getter method for this Player's address
-	 * 
-	 * @return address
-	 * 
-	 * @hibernate.component class = com.golf.domain.player.Address
-	 */
+	
 	public Address getAddress()
 	{
 		return address;
@@ -134,13 +135,7 @@ public class Player extends Entity
 		this.address = address;
 	}
 
-	/**
-	 * The getter method for this Player's phoneNumber
-	 * 
-	 * @return phoneNumber
-	 * 
-	 * @hibernate.property column = "PHONE_NUMBER"
-	 */
+	
 	public String getPhoneNumber()
 	{
 		return phoneNumber;
@@ -154,13 +149,7 @@ public class Player extends Entity
 		this.phoneNumber = phoneNumber;
 	}
 
-	/**
-	 * The getter method for this Player's emailAddress
-	 * 
-	 * @return emailAddress
-	 * 
-	 * @hibernate.property column = "EMAIL_ADDRESS"
-	 */
+	
 	public String getEmailAddress()
 	{
 		return emailAddress;
@@ -174,13 +163,7 @@ public class Player extends Entity
 		this.emailAddress = emailAddress;
 	}
 
-	/**
-	 * The getter method for this Player's dateOfBirth
-	 * 
-	 * @return dateOfBirth
-	 * 
-	 * @hibernate.property column = "DATE_OF_BIRTH"
-	 */
+	
 	public Date getDateOfBirth()
 	{
 		return dateOfBirth;
@@ -191,33 +174,25 @@ public class Player extends Entity
 		this.dateOfBirth = dateOfBirth;
 	}
 	
-	/**
-	 * @hibernate.set 
-	 *  inverse="true" 
-	 *  cascade="all" 
-	 *  lazy="true"
-	 * @hibernate.collection-key 
-	 * 	column="PLAYER_ID" not-null="true"
-	 * @hibernate.collection-one-to-many 
-	 * 	class="com.golf.domain.scorecard.Scorecard"
-	 */
-	public Set getScorecards()
+	
+   public Set<Scorecard> getScorecards()
 	{
 		return scorecards;
 	}
 
-	public void setScorecards(Set scorecards)
+	public void setScorecards(Set<Scorecard> scorecards)
 	{
 		this.scorecards = scorecards;
 	}
 	
-	public void addScorecard(Scorecard scorecard)
-	{	
+   public void addScorecard(Scorecard scorecard)
+  	{	
 		scorecard.setPlayer(this);
 		scorecards.add(scorecard);
 		
 	}
 
+	@Transient
 	public String getFullName()
 	{
 		StringBuffer fullName = new StringBuffer();
@@ -236,6 +211,10 @@ public class Player extends Entity
 		return fullName.toString();
 	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
+
 //	public boolean equals(Object obj)
 //	{
 //		Player player = (Player) obj;
@@ -248,30 +227,9 @@ public class Player extends Entity
 //		return this.getFullName();
 //	}
 
-	@Override
-	protected void addEntityFieldsToEqualsBuilder(EqualsBuilder builder,
-			Object obj) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	protected void addEntityFieldsToHashCodeBuilder(HashCodeBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	protected void addEntityFieldsToToStringBuilder(ToStringBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	protected int hashCodeMultiplier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	
 

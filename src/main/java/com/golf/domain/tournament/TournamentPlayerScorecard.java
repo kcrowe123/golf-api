@@ -69,17 +69,17 @@ public class TournamentPlayerScorecard
 	{	
 		String flights = "";
 		
-		for (Iterator iterator = dayOneScorecard.getFlights().iterator(); iterator.hasNext();)
-		{
-			Flight flight = (Flight) iterator.next();
-			
-			flights = flights + (flight.getName() + ", ");
-		}
-		
-		if(flights != null && flights.length() > 0)
-		{
-			flights = flights.substring(0, flights.length() - 2);
-		}
+//		for (Iterator iterator = dayOneScorecard.getFlights().iterator(); iterator.hasNext();)
+//		{
+//			Flight flight = (Flight) iterator.next();
+//			
+//			flights = flights + (flight.getName() + ", ");
+//		}
+//		
+//		if(flights != null && flights.length() > 0)
+//		{
+//			flights = flights.substring(0, flights.length() - 2);
+//		}
 		
 		return flights;
 	}

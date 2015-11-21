@@ -28,7 +28,7 @@ public class SkinScorecard
 	
 	public SkinScorecard(Scorecard scorecard)
 	{
-		player = scorecard.getPlayer();
+		//player = scorecard.getPlayer();
 		
 		firstHole = new Hole(scorecard.getFirstHole());
 		secondHole = new Hole(scorecard.getSecondHole());

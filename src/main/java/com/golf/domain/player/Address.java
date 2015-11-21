@@ -1,18 +1,29 @@
 package com.golf.domain.player;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
+
+
+
 /**
  * This is the Address class.
  * @author Keith
  *
  */
+@Embeddable
 public class Address {
-    /** private definition for street. **/
+    
+	@Column(name="STREET", nullable = true)
     private String street;
-    /** private definition for city. **/
+    
+	@Column(name="CITY", nullable = true)
     private String city;
-    /** private definition for state. **/
+    
+	@Column(name="STATE", nullable = true)
     private String state;
-    /** private definition for zipCode. **/
+    
+	@Column(name="ZIP_CODE", nullable = true)
     private String zipCode;
 
 /**
@@ -22,12 +33,6 @@ public class Address {
 
     }
 
-    /**
-     * @param street <code>java.lang.String</code>
-     * @param city <code>java.lang.String</code>
-     * @param state <code>java.lang.String</code>
-     * @param zipCode <code>java.lang.String</code>
-     */
     public Address( String street, String city, String state, String zipCode) {
         this.street = street;
         this.city = city;
@@ -35,18 +40,11 @@ public class Address {
         this.zipCode = zipCode;
     }
 
+    @Transient
 	public String getMailingAddress(){
 		return street + " " + city + ", " + state + " " + zipCode;
 	}
 
-
-	/**
-	 * The getter method for this Player's street
-	 * 
-	 * @return street
-	 * 
-	 * @hibernate.property column = "STREET"
-	 */
 	public String getStreet(){
 		return street;
 	}
@@ -55,13 +53,6 @@ public class Address {
 		this.street = street;
 	}
 
-	/**
-	 * The getter method for this Player's city
-	 * 
-	 * @return city
-	 * 
-	 * @hibernate.property column = "CITY"
-	 */
 	public String getCity(){
 		return city;
 	}
@@ -70,13 +61,6 @@ public class Address {
 		this.city = city;
 	}
 
-	/**
-	 * The getter method for this Player's state
-	 * 
-	 * @return state
-	 * 
-	 * @hibernate.property column = "STATE"
-	 */
 	public String getState(){
 		return state;
 	}
@@ -85,14 +69,7 @@ public class Address {
 		this.state = state;
 	}
 
-	/**
-	 * The getter method for this Player's zipCode
-	 * 
-	 * @return zipCode
-	 * 
-	 * @hibernate.property column = "ZIP_CODE"
-	 */
-
+	@Column(name="ZIP_CODE", nullable = true)
 	public String getZipCode(){
 		return zipCode;
 	}

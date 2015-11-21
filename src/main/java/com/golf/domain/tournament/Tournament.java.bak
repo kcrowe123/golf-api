@@ -1,4 +1,4 @@
-package com.golf.domain.player;
+package com.golf.domain.tournament;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -7,11 +7,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import com.golf.domain.Entity;
 
 @SuppressWarnings("serial")
-public class Player1 extends Entity {
+public class Tournament extends Entity {
 
     private final String name;
 
-    public Player1(Long id, String name) {
+    public Tournament(Long id, String name) {
         super(id);
         this.name = name;
     }
@@ -22,7 +22,7 @@ public class Player1 extends Entity {
 
     @Override
     protected void addEntityFieldsToEqualsBuilder(EqualsBuilder builder, Object obj) {
-    	Player1 rhs = (Player1) obj;
+    	Tournament rhs = (Tournament) obj;
         builder.append(name, rhs.name);
     }
 

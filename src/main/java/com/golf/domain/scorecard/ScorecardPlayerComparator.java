@@ -10,10 +10,11 @@ public class ScorecardPlayerComparator implements Comparator
 		Scorecard scorecard1 = (Scorecard)o1;
 		Scorecard scorecard2 = (Scorecard)o2;
 		
-		String fullName1 = scorecard1.getPlayer().getFullName();
-		String fullName2 = scorecard2.getPlayer().getFullName();
-		
-		return fullName1.compareTo(fullName2);
+//		String fullName1 = scorecard1.getPlayer().getFullName();
+//		String fullName2 = scorecard2.getPlayer().getFullName();
+//		
+//		return fullName1.compareTo(fullName2);
+		return 0;
 	}
 
 }

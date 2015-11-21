@@ -5,34 +5,48 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-import com.golf.domain.Entity;
 import com.golf.domain.player.Player;
 import com.golf.domain.scorecard.Scorecard;
 import com.golf.domain.skin.Skins;
 import com.golf.domain.tournament.Tournament;
 //import com.golf.framework.date.DateUtil;
 
-/**
- * Represents a Tournament Day
- * 
- * @author Z900247
- *
- * @hibernate.class  table="day"
- */
-public class Day extends Entity
+
+@Entity
+@Table(name="DAY")
+public class Day
 {
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "DAY_ID", nullable = false)
+	private long id;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "TOURNAMENT_ID", nullable = false, insertable = false, updatable = false)
 	private Tournament tournament;
 	
+	@Column(name = "DATE")
 	private Date date;
 	
+	@Column(name = "COURSE_NAME")
 	private String course;
 	
+	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="day", orphanRemoval=true)
 	private Set<Scorecard> scorecards;
 	
+	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="day", orphanRemoval=true)
 	private Set<Skins> skins;
 	
 	public Day()
@@ -40,29 +54,11 @@ public class Day extends Entity
 		
 	}
 	
-	/**
-	 * The getter method for this Days's identifier.
-	 * 
-	 * @hibernate.id column = "DAY_ID" generator-class="native"
-	 */
 	public Long getId()
 	{
-		return super.getId();
+		return id;
 	}
 	
-	/**
-	 * Returns the tournament.
-	 * 
-	 * @return
-	 * @hibernate.many-to-one
-	 *  column="TOURNAMENT_ID"
-	 *  not-null="true"
-	 *  insert="false" 
-	 *  update="false"
-	 * @hibernate.column
-	 *  name="TOURNAMENT_ID"
-	 *  not-null="true"
-	 */
 	public Tournament getTournament()
 	{
 		return tournament;
@@ -73,13 +69,6 @@ public class Day extends Entity
 		this.tournament = tournament;
 	}
 	
-	/**
-	 * The getter method for this Days date
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "DATE"
-	 */
 	public Date getDate()
 	{
 		return date;
@@ -90,13 +79,6 @@ public class Day extends Entity
 		this.date = date;
 	}
 	
-	/**
-	 * The getter method for this Days Course Name
-	 * 
-	 * @return course
-	 * 
-	 * @hibernate.property column = "COURSE_NAME"
-	 */
 	public String getCourse()
 	{
 		return course;
@@ -106,17 +88,7 @@ public class Day extends Entity
 	{
 		this.course = course;
 	}
-	
-	/**
-	 * @hibernate.set 
-	 *  inverse="true" 
-	 *  cascade="all-delete-orphan" 
-	 *  lazy="true"
-	 * @hibernate.collection-key 
-	 * 	column="DAY_ID" not-null="true"
-	 * @hibernate.collection-one-to-many 
-	 * 	class="com.golf.domain.scorecard.Scorecard"
-	 */
+		
 	public Set<Scorecard> getScorecards()
 	{
 		return scorecards;
@@ -129,20 +101,11 @@ public class Day extends Entity
 	
 	public void addScorecard(Scorecard scorecard)
 	{		
-		scorecard.setDay(this);
+		//scorecard.setDay(this);
 		scorecards.add(scorecard);
 	}
 	
-	/**
-	 * @hibernate.set 
-	 *  inverse="true" 
-	 *  cascade="all-delete-orphan" 
-	 *  lazy="true"
-	 * @hibernate.collection-key 
-	 * 	column="DAY_ID" not-null="true"
-	 * @hibernate.collection-one-to-many 
-	 * 	class="com.golf.domain.skin.Skins"
-	 */
+
 	public Set<Skins> getSkins()
 	{
 		if(skins == null)
@@ -176,30 +139,7 @@ public class Day extends Entity
 		return null;
 	}
 
-	@Override
-	protected void addEntityFieldsToEqualsBuilder(EqualsBuilder builder,
-			Object obj) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	protected void addEntityFieldsToHashCodeBuilder(HashCodeBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void addEntityFieldsToToStringBuilder(ToStringBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected int hashCodeMultiplier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 //	public String toString()
 //	{

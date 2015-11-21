@@ -4,52 +4,105 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import com.golf.domain.Entity;
 import com.golf.domain.day.Day;
 import com.golf.domain.flight.Flight;
 import com.golf.domain.player.Player;
 import com.golf.domain.skin.Skins;
 
-/**
- * Represents a Scorecard
- * 
- * @author Z900247
- * 
- * @hibernate.class  table="scorecard"
- */
-public class Scorecard extends Entity
+@Entity
+@Table(name="SCORECARD")
+public class Scorecard
 {
 	public static final String DISQUALIFIED = "DQ";
 	
+	@Id
+	@GeneratedValue
+	@Column(name = "SCORECARD_ID", nullable = false)
+	private long id;
+	
+	@Column(name="HANDICAP")
 	private int handicap;
+	
+	@Column(name="FIRST_HOLE")
 	private int firstHole;
+	
+	@Column(name="SECOND_HOLE")
 	private int secondHole;
+	
+	@Column(name="THIRD_HOLE")
 	private int thirdHole;
+	
+	@Column(name="FOURTH_HOLE")
 	private int fourthHole;
+	
+	@Column(name="FIFTH_HOLE")
 	private int fifthHole;
+	
+	@Column(name="SIXTH_HOLE")
 	private int sixthHole;
+	
+	@Column(name="SEVENTH_HOLE")
 	private int seventhHole;
+	
+	@Column(name="EIGHTH_HOLE")
 	private int eigthHole;
+	
+	@Column(name="NINTH_HOLE")
 	private int ninthHole;
+	
+	@Column(name="TENTH_HOLE")
 	private int tenthHole;
+	
+	@Column(name="ELEVENTH_HOLE")
 	private int eleventhHole;
+	
+	@Column(name="TWELTH_HOLE")
 	private int twelthHole;
+	
+	@Column(name="THIRTEENTH_HOLE")
 	private int thirteenthHole;
+	
+	@Column(name="FOURTEENTH_HOLE")
 	private int fourteenthHole;
+	
+	@Column(name="FIFTEENTH_HOLE")
 	private int fifteenthHole;
+	
+	@Column(name="SIXTEENTH_HOLE")
 	private int sixteenthHole;
+	
+	@Column(name="SEVENTEENTH_HOLE")
 	private int seventeenthHole;
+	
+	@Column(name="EIGHTEENTH_HOLE")
 	private int eighteenthHole;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "DAY_ID", nullable = false)
 	private Day day;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PLAYER_ID", nullable = false)
 	private Player player;
-	private Set flights;
-	private Set skins;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "FLIGHT_SCORECARD", joinColumns = { @JoinColumn(name = "SCORECARD_ID", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "FLIGHT_ID", nullable = false, updatable = false) })
+	private Set<Flight> flights;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "SKIN_SCORECARD", joinColumns = { @JoinColumn(name = "SCORECARD_ID", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "SKIN_ID", nullable = false, updatable = false) })
+	private Set<Skins> skins;
 
 	
 	
@@ -63,23 +116,12 @@ public class Scorecard extends Entity
 		this.handicap = handicap;
 	}
 	
-	/**
-	 * The getter method for this Scorecard's identifier.
-	 * 
-	 * @hibernate.id column = "SCORECARD_ID" generator-class="native"
-	 */
+
 	public Long getId()
 	{
-		return super.getId();
+		return id;
 	}
-	
-	/**
-	 * The getter method for this Scorecards Hanicap
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "HANDICAP"
-	 */
+
 	public int getHandicap()
 	{
 		return handicap;
@@ -90,13 +132,7 @@ public class Scorecard extends Entity
 		this.handicap = handicap;
 	}
 	
-	/**
-	 * The getter method for this First Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "FIRST_HOLE"
-	 */
+
 	public int getFirstHole()
 	{
 		return firstHole;
@@ -107,13 +143,7 @@ public class Scorecard extends Entity
 		this.firstHole = firstHole;
 	}
 	
-	/**
-	 * The getter method for this Second Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "SECOND_HOLE"
-	 */
+
 	public int getSecondHole()
 	{
 		return secondHole;
@@ -124,13 +154,6 @@ public class Scorecard extends Entity
 		this.secondHole = secondHole;
 	}
 	
-	/**
-	 * The getter method for this Third Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "THIRD_HOLE"
-	 */
 	public int getThirdHole()
 	{
 		return thirdHole;
@@ -141,13 +164,6 @@ public class Scorecard extends Entity
 		this.thirdHole = thirdHole;
 	}
 	
-	/**
-	 * The getter method for this Fourth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "FOURTH_HOLE"
-	 */
 	public int getFourthHole()
 	{
 		return fourthHole;
@@ -158,13 +174,7 @@ public class Scorecard extends Entity
 		this.fourthHole = fourthHole;
 	}
 	
-	/**
-	 * The getter method for this Fifth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "FIFTH_HOLE"
-	 */
+
 	public int getFifthHole()
 	{
 		return fifthHole;
@@ -175,13 +185,6 @@ public class Scorecard extends Entity
 		this.fifthHole = fifthHole;
 	}
 	
-	/**
-	 * The getter method for this Sixth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "SIXTH_HOLE"
-	 */
 	public int getSixthHole()
 	{
 		return sixthHole;
@@ -192,13 +195,7 @@ public class Scorecard extends Entity
 		this.sixthHole = sixthHole;
 	}
 	
-	/**
-	 * The getter method for this Seventh Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "SEVENTH_HOLE"
-	 */
+
 	public int getSeventhHole()
 	{
 		return seventhHole;
@@ -209,13 +206,7 @@ public class Scorecard extends Entity
 		this.seventhHole = seventhHole;
 	}
 	
-	/**
-	 * The getter method for this Eighth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "EIGHTH_HOLE"
-	 */
+
 	public int getEigthHole()
 	{
 		return eigthHole;
@@ -226,13 +217,7 @@ public class Scorecard extends Entity
 		this.eigthHole = eigthHole;
 	}
 	
-	/**
-	 * The getter method for this Ninth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "NINTH_HOLE"
-	 */
+
 	public int getNinthHole()
 	{
 		return ninthHole;
@@ -243,13 +228,7 @@ public class Scorecard extends Entity
 		this.ninthHole = ninthHole;
 	}
 	
-	/**
-	 * The getter method for this Tenth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "TENTH_HOLE"
-	 */
+
 	public int getTenthHole()
 	{
 		return tenthHole;
@@ -260,13 +239,7 @@ public class Scorecard extends Entity
 		this.tenthHole = tenthHole;
 	}
 	
-	/**
-	 * The getter method for this Eleventh Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "ELEVENTH_HOLE"
-	 */
+
 	public int getEleventhHole()
 	{
 		return eleventhHole;
@@ -277,13 +250,7 @@ public class Scorecard extends Entity
 		this.eleventhHole = eleventhHole;
 	}
 	
-	/**
-	 * The getter method for this Twelth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "TWELTH_HOLE"
-	 */
+
 	public int getTwelthHole()
 	{
 		return twelthHole;
@@ -294,13 +261,7 @@ public class Scorecard extends Entity
 		this.twelthHole = twelthHole;
 	}
 	
-	/**
-	 * The getter method for this Thirteenth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "THIRTEENTH_HOLE"
-	 */
+
 	public int getThirteenthHole()
 	{
 		return thirteenthHole;
@@ -311,13 +272,7 @@ public class Scorecard extends Entity
 		this.thirteenthHole = thirteenthHole;
 	}
 	
-	/**
-	 * The getter method for this Fourteenth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "FOURTEENTH_HOLE"
-	 */
+
 	public int getFourteenthHole()
 	{
 		return fourteenthHole;
@@ -328,13 +283,7 @@ public class Scorecard extends Entity
 		this.fourteenthHole = fourteenthHole;
 	}
 	
-	/**
-	 * The getter method for this Fifteenth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "FIFTEENTH_HOLE"
-	 */
+
 	public int getFifteenthHole()
 	{
 		return fifteenthHole;
@@ -345,13 +294,7 @@ public class Scorecard extends Entity
 		this.fifteenthHole = fifteenthHole;
 	}
 	
-	/**
-	 * The getter method for this Sixteenth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "SIXTEENTH_HOLE"
-	 */
+
 	public int getSixteenthHole()
 	{
 		return sixteenthHole;
@@ -362,13 +305,7 @@ public class Scorecard extends Entity
 		this.sixteenthHole = sixteenthHole;
 	}
 	
-	/**
-	 * The getter method for this Seventeenth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "SEVENTEENTH_HOLE"
-	 */
+
 	public int getSeventeenthHole()
 	{
 		return seventeenthHole;
@@ -379,13 +316,7 @@ public class Scorecard extends Entity
 		this.seventeenthHole = seventeenthHole;
 	}
 	
-	/**
-	 * The getter method for this Eightteenth Hole
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "EIGHTEENTH_HOLE"
-	 */
+
 	public int getEighteenthHole()
 	{
 		return eighteenthHole;
@@ -396,17 +327,6 @@ public class Scorecard extends Entity
 		this.eighteenthHole = eighteenthHole;
 	}
 	
-	/**
-	 * Returns the day.
-	 * 
-	 * @return
-	 * @hibernate.many-to-one
-	 *  column="DAY_ID"
-	 *  not-null="true"
-	 * @hibernate.column
-	 *  name="DAY_ID"
-	 *  not-null="true"
-	 */
 	public Day getDay()
 	{
 		return day;
@@ -416,18 +336,8 @@ public class Scorecard extends Entity
 	{
 		this.day = day;
 	}
-	
-	/**
-	 * Returns the player.
-	 * 
-	 * @return
-	 * @hibernate.many-to-one
-	 *  column="PLAYER_ID"
-	 *  not-null="true"
-	 * @hibernate.column
-	 *  name="PLAYER_ID"
-	 *  not-null="true"
-	 */
+
+
 	public Player getPlayer()
 	{
 		return player;
@@ -437,55 +347,33 @@ public class Scorecard extends Entity
 	{
 		this.player = player;
 	}
-	
-	/**
-	 * @return
-	 * @hibernate.set
-	 * table="FLIGHT_SCORECARD"
-	 * lazy="false"
-	 * @hibernate.collection-key
-	 * column="SCORECARD_ID"
-	 * @hibernate.collection-many-to-many
-	 * column="FLIGHT_ID"
-	 * class="com.dogtown.domain.flight.Flight"
-	 */
-	public Set getFlights()
+
+	public Set<Flight> getFlights()
 	{
 		if(flights == null)
 		{
-			flights = new HashSet();
+			flights = new HashSet<Flight>();
 		}
 		
 		return flights;
 	}
 
-	public void setFlights(Set flights)
+	public void setFlights(Set<Flight> flights)
 	{
 		this.flights = flights;
 	}
 	
-	/**
-	 * @return
-	 * @hibernate.set
-	 * table="SKIN_SCORECARD"
-	 * lazy="true"
-	 * @hibernate.collection-key
-	 * column="SCORECARD_ID"
-	 * @hibernate.collection-many-to-many
-	 * column="SKIN_ID"
-	 * class="com.dogtown.domain.skin.Skins"
-	 */
-	public Set getSkins()
+	public Set<Skins> getSkins()
 	{
 		if(skins == null)
 		{
-			skins = new HashSet();
+			skins = new HashSet<Skins>();
 		}
 		
 		return skins;
 	}
 
-	public void setSkins(Set skins)
+	public void setSkins(Set<Skins> skins)
 	{
 		this.skins = skins;
 	}
@@ -499,9 +387,9 @@ public class Scorecard extends Entity
 	{	
 		String skinGames = "";
 		
-		for (Iterator iterator = getSkins().iterator(); iterator.hasNext();)
+		for (Iterator<Skins> iterator = getSkins().iterator(); iterator.hasNext();)
 		{
-			Skins skin = (Skins) iterator.next();
+			Skins skin = iterator.next();
 			
 			skinGames = skinGames + (skin.getName() + ", ");
 		}
@@ -518,9 +406,9 @@ public class Scorecard extends Entity
 	{	
 		String flights = "";
 		
-		for (Iterator iterator = getFlights().iterator(); iterator.hasNext();)
+		for (Iterator<Flight> iterator = getFlights().iterator(); iterator.hasNext();)
 		{
-			Flight flight = (Flight) iterator.next();
+			Flight flight = iterator.next();
 			
 			flights = flights + (flight.getName() + ", ");
 		}
@@ -537,8 +425,7 @@ public class Scorecard extends Entity
 	
 	public String getScore()
 	{
-		double total = 0;
-		
+				
 		if(isDisqualified())
 		{
 			return DISQUALIFIED;
@@ -660,29 +547,5 @@ public class Scorecard extends Entity
 		return handicapScore.toString();
 	}
 
-	@Override
-	protected void addEntityFieldsToEqualsBuilder(EqualsBuilder builder,
-			Object obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void addEntityFieldsToHashCodeBuilder(HashCodeBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void addEntityFieldsToToStringBuilder(ToStringBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected int hashCodeMultiplier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

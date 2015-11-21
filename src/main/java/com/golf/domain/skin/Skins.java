@@ -3,26 +3,46 @@ package com.golf.domain.skin;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.golf.domain.Entity;
 import com.golf.domain.day.Day;
 import com.golf.domain.scorecard.Scorecard;
 
-/**
- * Represents a Skins Game
- * 
- * @author Z900247
- * 
- * @hibernate.class  table="skin"
- */
-public class Skins extends Entity
+@Entity
+@Table(name="SKIN")
+public class Skins
 {
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "SKIN_ID", nullable = false)
+	private long id;
+	
+	@Column(name="NAME")
 	private String name;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "DAY_ID", nullable = false)
 	private Day day;
-	private Set scorecards;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "SKIN_SCORECARD", joinColumns = { @JoinColumn(name = "SKIN_ID", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "SCORECARD_ID", nullable = false, updatable = false) })
+	private Set<Scorecard> scorecards;
 	
 	public Skins()
 	{
@@ -35,23 +55,12 @@ public class Skins extends Entity
 		this.day = day;
 	}
 	
-	/**
-	 * The getter method for this Skins Game identifier.
-	 * 
-	 * @hibernate.id column = "SKIN_ID" generator-class="native"
-	 */
 	public Long getId()
 	{
-		return super.getId();
+		return id;
 	}
 	
-	/**
-	 * The getter method for Skins Game name
-	 * 
-	 * @return date
-	 * 
-	 * @hibernate.property column = "NAME"
-	 */
+
 	public String getName()
 	{
 		return name;
@@ -61,18 +70,7 @@ public class Skins extends Entity
 	{
 		this.name = name;
 	}
-	
-	/**
-	 * Returns the day.
-	 * 
-	 * @return
-	 * @hibernate.many-to-one
-	 *  column="DAY_ID"
-	 *  not-null="true"
-	 * @hibernate.column
-	 *  name="DAY_ID"
-	 *  not-null="true"
-	 */
+
 	public Day getDay()
 	{
 		return day;
@@ -83,28 +81,17 @@ public class Skins extends Entity
 		this.day = day;
 	}
 	
-	/**
-	 * @return
-	 * @hibernate.set
-	 * table="SKIN_SCOREDARD"
-	 * lazy="true"
-	 * @hibernate.collection-key
-	 * column="SKIN_ID"
-	 * @hibernate.collection-many-to-many
-	 * column="SCORECARD_ID"
-	 * class="com.golf.domain.scorecard.Scorecard"
-	 */
-	public Set getScorecards()
+	public Set<Scorecard> getScorecards()
 	{
 		if(scorecards == null)
 		{
-			scorecards = new HashSet();
+			scorecards = new HashSet<Scorecard>();
 		}
 		
 		return scorecards;
 	}
 
-	public void setScorecards(Set scorecards)
+	public void setScorecards(Set<Scorecard> scorecards)
 	{
 		this.scorecards = scorecards;
 	}
@@ -114,28 +101,5 @@ public class Skins extends Entity
 		getScorecards().add(scorecard);
 	}
 
-	@Override
-	protected void addEntityFieldsToEqualsBuilder(EqualsBuilder builder,
-			Object obj) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	protected void addEntityFieldsToHashCodeBuilder(HashCodeBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void addEntityFieldsToToStringBuilder(ToStringBuilder builder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected int hashCodeMultiplier() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }
