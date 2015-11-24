@@ -5,3 +5,5 @@
 .springBeans
 
 *.lock
+data/elasticsearch/*
+log.txt
