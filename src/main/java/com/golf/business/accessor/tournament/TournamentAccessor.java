@@ -16,19 +16,19 @@ import com.golf.domain.tournament.Tournament;
 @Service("tournamentAccessor")
 public class TournamentAccessor implements Accessor<Tournament> {
 
-	  @Autowired
-	  private TournamentDao tournamentDao;
-	
-	@Override
-	public List<Tournament> find(Filter<Tournament> filter) {	
-		//return Lists.newArrayList(new Tournament(1L, "Tournament1"), new Tournament(2L, "Tournament2"), new Tournament(3L, "Tournament3"));
-		return tournamentDao.getAll();
-	}
+    @Autowired
+    private TournamentDao tournamentDao;
+    
+    @Override
+    public List<Tournament> find(Filter<Tournament> filter) {    
+        //return Lists.newArrayList(new Tournament(1L, "Tournament1"), new Tournament(2L, "Tournament2"), new Tournament(3L, "Tournament3"));
+        return tournamentDao.getAll();
+    }
 
-	@Override
-	public Tournament load(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Tournament load(Long id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

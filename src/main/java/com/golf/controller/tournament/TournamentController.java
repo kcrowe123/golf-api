@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.golf.business.Accessor;
 import com.golf.business.BaseFilter;
-import com.golf.business.accessor.filter.TournamentFilter;
+import com.golf.business.accessor.filter.tournament.TournamentFilter;
 import com.golf.domain.tournament.Tournament;
 
 @RestController

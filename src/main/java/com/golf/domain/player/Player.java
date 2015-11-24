@@ -1,5 +1,6 @@
 package com.golf.domain.player;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -17,13 +18,20 @@ import javax.persistence.AttributeOverrides;
 
 
 
+
+
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.golf.domain.scorecard.Scorecard;
+import com.golf.domain.tournament.Tournament;
 
 
 @Entity
 @Table(name="Player")
-public class Player 
-{
+public class Player extends com.golf.domain.Entity implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "PLAYER_ID", nullable = false)
@@ -54,7 +62,7 @@ public class Player
 	@Column(name="DATE_OF_BIRTH")
 	private Date dateOfBirth;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "player")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "player")
 	private Set<Scorecard> scorecards;
 
 	public Player()
@@ -74,7 +82,7 @@ public class Player
 	}
 	
 
-	public long getId()
+	public Long getId()
 	{
 		return id;
 	}
@@ -214,6 +222,27 @@ public class Player
 	public void setId(long id) {
 		this.id = id;
 	}
+
+    @Override
+    protected void addEntityFieldsToEqualsBuilder(EqualsBuilder builder, Object obj) {
+    	Player rhs = (Player) obj;
+        builder.append(lastName, rhs.lastName);
+    }
+
+    @Override
+    protected int hashCodeMultiplier() {
+        return 7;
+    }
+
+    @Override
+    protected void addEntityFieldsToHashCodeBuilder(HashCodeBuilder builder) {
+        builder.append(lastName);
+    }
+
+    @Override
+    protected void addEntityFieldsToToStringBuilder(ToStringBuilder builder) {
+        builder.append("lastName", lastName);
+    }
 
 //	public boolean equals(Object obj)
 //	{
