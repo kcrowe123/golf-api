@@ -83,7 +83,7 @@ public class Skins
 	
 	public Set<Scorecard> getScorecards()
 	{
-		if(scorecards == null)
+		if (scorecards == null)
 		{
 			scorecards = new HashSet<Scorecard>();
 		}

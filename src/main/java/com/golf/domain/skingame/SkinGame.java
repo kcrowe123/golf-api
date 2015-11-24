@@ -40,7 +40,7 @@ public class SkinGame
 		
 		skinScorecards = new ArrayList<SkinScorecard>();
 		
-		if(skin.getScorecards().size() > 1)
+		if (skin.getScorecards().size() > 1)
 		{
 			for (Iterator<Scorecard> iterator = skin.getScorecards().iterator(); iterator.hasNext();)
 			{
@@ -260,7 +260,7 @@ public class SkinGame
 
 	private void setSkin(Hole scorecard1, Hole scorecard2)
 	{
-		if(scorecard1.getScore() < scorecard2.getScore())
+		if (scorecard1.getScore() < scorecard2.getScore())
 		{
 			scorecard1.setSkin(true);
 			skinsOut++;

@@ -1,4 +1,4 @@
-package com.golf.business.accessor;
+package com.golf.business.accessor.tournament;
 
 import java.util.List;
 

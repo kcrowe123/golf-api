@@ -16,14 +16,14 @@ public class PlayerController {
 	@Inject
 	private PlayerService playerService;
 
-	 @RequestMapping(value="/players")
+	 @RequestMapping(value = "/players")
 	 @ResponseBody
 	 public List<Player> getAll() {
 		List<Player> playerList = null;
 	    try {
 	    	playerList = playerService.getAllPlayers();
 	    }
-	    catch(Exception ex) {
+	    catch (Exception ex) {
 	      System.out.println(ex.getMessage());
 	    }
 	    return playerList;

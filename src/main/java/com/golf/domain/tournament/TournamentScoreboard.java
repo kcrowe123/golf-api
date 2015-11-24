@@ -13,7 +13,7 @@ public class TournamentScoreboard
 	
 	public String getTotalPlayers()
 	{
-		if(scorecards != null)
+		if (scorecards != null)
 		{
 			return scorecards.size() + "";
 		}
@@ -43,7 +43,7 @@ public class TournamentScoreboard
 	
 	public void addScorecard(TournamentPlayerScorecard scorecard)
 	{
-		if(scorecards == null)
+		if (scorecards == null)
 		{
 			scorecards = new ArrayList();
 		}

@@ -43,7 +43,7 @@ public class Tournament extends com.golf.domain.Entity implements Serializable
 	private String name;
 	
     //@JsonIgnore
-	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name = "TOURNAMENT_ID", nullable = false, updatable = false)
 	private List<Day> days;
 	
@@ -65,7 +65,7 @@ public class Tournament extends com.golf.domain.Entity implements Serializable
 	
 	public List<Day> getDays()
 	{
-		if(days == null)
+		if (days == null)
 		{
 			days = new ArrayList<Day>();
 		}
@@ -80,7 +80,7 @@ public class Tournament extends com.golf.domain.Entity implements Serializable
 	
 	public void addDay(Day day)
 	{
-		if(days == null)
+		if (days == null)
 		{
 			days = new ArrayList<Day>();
 		}
@@ -92,7 +92,7 @@ public class Tournament extends com.golf.domain.Entity implements Serializable
 	{
 		Day day1 = null;
 		
-		if(days != null)
+		if (days != null)
 		{
 			for (Iterator<Day> iterator = days.iterator(); iterator.hasNext();)
 			{
@@ -108,7 +108,7 @@ public class Tournament extends com.golf.domain.Entity implements Serializable
 	{
 		Day day2 = null;
 		
-		if(days != null)
+		if (days != null)
 		{
 			for (Iterator<Day> iterator = days.iterator(); iterator.hasNext();)
 			{
@@ -123,7 +123,7 @@ public class Tournament extends com.golf.domain.Entity implements Serializable
 	{
 		List<TournamentPlayerScorecard> list = new ArrayList<TournamentPlayerScorecard>();
 		
-		if(getFirstDay() != null && getFirstDay().getScorecards() != null)
+		if (getFirstDay() != null && getFirstDay().getScorecards() != null)
 		{
 			for (Iterator<Scorecard> iterator = getFirstDay().getScorecards().iterator(); iterator.hasNext();)
 			{
@@ -159,7 +159,7 @@ public class Tournament extends com.golf.domain.Entity implements Serializable
 				
 				TournamentScoreboard scoreboard = (TournamentScoreboard)tournamentScorecards.get(flight);
 				
-				if(scoreboard == null)
+				if (scoreboard == null)
 				{
 					scoreboard = new TournamentScoreboard();
 					scoreboard.setFlight(flight);
@@ -200,7 +200,7 @@ public class Tournament extends com.golf.domain.Entity implements Serializable
 			{
 				Flight playerFlight = iterator2.next();
 
-				if(playerFlight.getName().equals(flight.getName()))
+				if (playerFlight.getName().equals(flight.getName()))
 				{
 					scoreboard.setFlight(playerFlight);
 					scoreboard.addScorecard(tournamentPlayerScorecard);

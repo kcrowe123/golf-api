@@ -15,12 +15,13 @@ import com.golf.domain.tournament.Tournament;
 
 @RestController
 public class TournamentController {
-	
-	@Inject
-	private Accessor<Tournament> tournamentAccessor;
-	
+
+    @Inject
+    private Accessor<Tournament> tournamentAccessor;
+    
     @RequestMapping("/tournament")
-    public List<Tournament> findTournament(@RequestParam(value="name", required=false) String name, @RequestParam(value=TournamentFilter.NAME, required=false) String sortBy, @RequestParam(value=BaseFilter.SORT_DESC, required=false) Boolean sortDescending, @RequestParam(value=BaseFilter.START_ITEM, required=false) Integer startItem, @RequestParam(value=BaseFilter.COUNT, required=false) Integer count) {
+    public List<Tournament> findTournament(@RequestParam(value = "name", required = false) String name, @RequestParam(value = TournamentFilter.NAME, required = false) String sortBy, @RequestParam(value = BaseFilter.SORT_DESC, required = false) Boolean sortDescending, @RequestParam(value = BaseFilter.START_ITEM, required = false) Integer startItem, @RequestParam(value = BaseFilter.COUNT, required = false) Integer count) {
+    	System.out.println(name);
         return tournamentAccessor.find(new TournamentFilter(name, sortBy, sortDescending, startItem, count));
     }
 }

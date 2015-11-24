@@ -16,11 +16,11 @@ public class TournamentPlayerScorecardScoreComparator implements Comparator<Tour
 		Double score;
 		try
 		{
-			score = new Double(Double.parseDouble(scorecard.getTwoDayHandicapTotal()));
+			score = Double.valueOf(scorecard.getTwoDayHandicapTotal());
 		} 
 		catch (Exception e)
 		{
-			score = new Double(HIGH_NUMBER);
+			score = Double.valueOf(HIGH_NUMBER);
 		}
 		
 		return score;

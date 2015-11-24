@@ -33,6 +33,11 @@
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <dependency>
+           <groupId>hsqldb</groupId>
+           <artifactId>hsqldb</artifactId>
+          <version>1.8.0.10</version>
+        </dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -58,11 +63,19 @@
 	</dependencies>
 
 	<build>
-		<plugins>
+		 <plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!--<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+				<configLocation>golf-api/project_checks.xml</configLocation>
+				</configuration>
+			</plugin>-->
 		</plugins>
 		<resources>
         <resource>
@@ -93,18 +106,6 @@
 	
 	  <reporting>
         <plugins>
-		     <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
-		<reportSets>
-            <reportSet>
-              <reports>
-                <report>checkstyle</report>
-              </reports>
-            </reportSet>
-          </reportSets>
-      </plugin>
         <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>

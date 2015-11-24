@@ -21,7 +21,7 @@ public class TournamentPlayerScorecard
 	
 	public String getTwoDayTotal()
 	{
-		if(Scorecard.DISQUALIFIED.equals(dayOneScorecard.getScore()) && Scorecard.DISQUALIFIED.equals(dayTwoScorecard.getScore()))
+		if (Scorecard.DISQUALIFIED.equals(dayOneScorecard.getScore()) && Scorecard.DISQUALIFIED.equals(dayTwoScorecard.getScore()))
 		{
 			return Scorecard.DISQUALIFIED;
 		}
@@ -29,12 +29,12 @@ public class TournamentPlayerScorecard
 		double day1 = 0;
 		double day2 = 0;
 		
-		if(!Scorecard.DISQUALIFIED.equals(dayOneScorecard.getScore()))
+		if (!Scorecard.DISQUALIFIED.equals(dayOneScorecard.getScore()))
 		{
 			day1 = Double.parseDouble(dayOneScorecard.getScore());
 		}
 		
-		if(!Scorecard.DISQUALIFIED.equals(dayTwoScorecard.getScore()))
+		if (!Scorecard.DISQUALIFIED.equals(dayTwoScorecard.getScore()))
 		{
 			day2 = Double.parseDouble(dayTwoScorecard.getScore());
 		}
@@ -44,7 +44,7 @@ public class TournamentPlayerScorecard
 	
 	public String getTwoDayHandicapTotal()
 	{
-		if(Scorecard.DISQUALIFIED.equals(dayOneScorecard.getHandicapScore()) && Scorecard.DISQUALIFIED.equals(dayTwoScorecard.getHandicapScore()))
+		if (Scorecard.DISQUALIFIED.equals(dayOneScorecard.getHandicapScore()) && Scorecard.DISQUALIFIED.equals(dayTwoScorecard.getHandicapScore()))
 		{
 			return Scorecard.DISQUALIFIED;
 		}
@@ -52,12 +52,12 @@ public class TournamentPlayerScorecard
 		double day1 = 0;
 		double day2 = 0;
 		
-		if(!Scorecard.DISQUALIFIED.equals(dayOneScorecard.getHandicapScore()))
+		if (!Scorecard.DISQUALIFIED.equals(dayOneScorecard.getHandicapScore()))
 		{
 			day1 = Double.parseDouble(dayOneScorecard.getHandicapScore());
 		}
 		
-		if(!Scorecard.DISQUALIFIED.equals(dayTwoScorecard.getHandicapScore()))
+		if (!Scorecard.DISQUALIFIED.equals(dayTwoScorecard.getHandicapScore()))
 		{
 			day2 = Double.parseDouble(dayTwoScorecard.getHandicapScore());
 		}

@@ -41,40 +41,40 @@ public class Address {
     }
 
     @Transient
-	public String getMailingAddress(){
+	public String getMailingAddress() {
 		return street + " " + city + ", " + state + " " + zipCode;
 	}
 
-	public String getStreet(){
+	public String getStreet() {
 		return street;
 	}
 
-	public void setStreet(String street){
+	public void setStreet(String street) {
 		this.street = street;
 	}
 
-	public String getCity(){
+	public String getCity() {
 		return city;
 	}
 
-	public void setCity(String city){
+	public void setCity(String city) {
 		this.city = city;
 	}
 
-	public String getState(){
+	public String getState() {
 		return state;
 	}
 
-	public void setState(String state){
+	public void setState(String state) {
 		this.state = state;
 	}
 
 	@Column(name="ZIP_CODE", nullable = true)
-	public String getZipCode(){
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(String zip){
+	public void setZipCode(String zip) {
 		this.zipCode = zip;
 	}
 }

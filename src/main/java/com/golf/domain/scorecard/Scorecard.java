@@ -21,7 +21,7 @@ import com.golf.domain.player.Player;
 import com.golf.domain.skin.Skins;
 
 @Entity
-@Table(name="SCORECARD")
+@Table(name = "SCORECARD")
 public class Scorecard
 {
 	public static final String DISQUALIFIED = "DQ";
@@ -37,55 +37,55 @@ public class Scorecard
 	@Column(name="FIRST_HOLE")
 	private int firstHole;
 	
-	@Column(name="SECOND_HOLE")
+	@Column(name = "SECOND_HOLE")
 	private int secondHole;
 	
-	@Column(name="THIRD_HOLE")
+	@Column(name = "THIRD_HOLE")
 	private int thirdHole;
 	
-	@Column(name="FOURTH_HOLE")
+	@Column(name = "FOURTH_HOLE")
 	private int fourthHole;
 	
-	@Column(name="FIFTH_HOLE")
+	@Column(name = "FIFTH_HOLE")
 	private int fifthHole;
 	
-	@Column(name="SIXTH_HOLE")
+	@Column(name = "SIXTH_HOLE")
 	private int sixthHole;
 	
-	@Column(name="SEVENTH_HOLE")
+	@Column(name = "SEVENTH_HOLE")
 	private int seventhHole;
 	
-	@Column(name="EIGHTH_HOLE")
+	@Column(name = "EIGHTH_HOLE")
 	private int eigthHole;
 	
-	@Column(name="NINTH_HOLE")
+	@Column(name = "NINTH_HOLE")
 	private int ninthHole;
 	
-	@Column(name="TENTH_HOLE")
+	@Column(name = "TENTH_HOLE")
 	private int tenthHole;
 	
-	@Column(name="ELEVENTH_HOLE")
+	@Column(name = "ELEVENTH_HOLE")
 	private int eleventhHole;
 	
-	@Column(name="TWELTH_HOLE")
+	@Column(name = "TWELTH_HOLE")
 	private int twelthHole;
 	
-	@Column(name="THIRTEENTH_HOLE")
+	@Column(name = "THIRTEENTH_HOLE")
 	private int thirteenthHole;
 	
-	@Column(name="FOURTEENTH_HOLE")
+	@Column(name = "FOURTEENTH_HOLE")
 	private int fourteenthHole;
 	
-	@Column(name="FIFTEENTH_HOLE")
+	@Column(name = "FIFTEENTH_HOLE")
 	private int fifteenthHole;
 	
-	@Column(name="SIXTEENTH_HOLE")
+	@Column(name = "SIXTEENTH_HOLE")
 	private int sixteenthHole;
 	
-	@Column(name="SEVENTEENTH_HOLE")
+	@Column(name = "SEVENTEENTH_HOLE")
 	private int seventeenthHole;
 	
-	@Column(name="EIGHTEENTH_HOLE")
+	@Column(name = "EIGHTEENTH_HOLE")
 	private int eighteenthHole;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -454,75 +454,75 @@ public class Scorecard
 	
 	private boolean isDisqualified()
 	{
-		if(firstHole < 1)
+		if (firstHole < 1)
 		{
 			return true;
 		}
-		else if(secondHole < 1)
+		else if (secondHole < 1)
 		{
 			return true;
 		}
-		else if(thirdHole < 1)
+		else if (thirdHole < 1)
 		{
 			return true;
 		}
-		else if(fourthHole < 1)
+		else if (fourthHole < 1)
 		{
 			return true;
 		}
-		else if(fifthHole < 1)
+		else if (fifthHole < 1)
 		{
 			return true;
 		}
-		else if(sixthHole < 1)
+		else if (sixthHole < 1)
 		{
 			return true;
 		}
-		else if(seventhHole < 1)
+		else if (seventhHole < 1)
 		{
 			return true;
 		}
-		else if(eigthHole < 1)
+		else if (eigthHole < 1)
 		{
 			return true;
 		}
-		else if(ninthHole < 1)
+		else if (ninthHole < 1)
 		{
 			return true;
 		}
-		else if(tenthHole < 1)
+		else if (tenthHole < 1)
 		{
 			return true;
 		}
-		else if(eleventhHole < 1)
+		else if (eleventhHole < 1)
 		{
 			return true;
 		}
-		else if(twelthHole < 1)
+		else if (twelthHole < 1)
 		{
 			return true;
 		}
-		else if(thirteenthHole < 1)
+		else if (thirteenthHole < 1)
 		{
 			return true;
 		}
-		else if(fourteenthHole < 1)
+		else if (fourteenthHole < 1)
 		{
 			return true;
 		}
-		else if(fifteenthHole < 1)
+		else if (fifteenthHole < 1)
 		{
 			return true;
 		}
-		else if(sixteenthHole < 1)
+		else if (sixteenthHole < 1)
 		{
 			return true;
 		}
-		else if(seventeenthHole < 1)
+		else if (seventeenthHole < 1)
 		{
 			return true;
 		}
-		else if(eighteenthHole < 1)
+		else if (eighteenthHole < 1)
 		{
 			return true;
 		}
@@ -533,7 +533,7 @@ public class Scorecard
 
 	public String getHandicapScore()
 	{
-		if(DISQUALIFIED.equals(getScore()))
+		if (DISQUALIFIED.equals(getScore()))
 		{
 			return DISQUALIFIED;
 		}
@@ -542,7 +542,7 @@ public class Scorecard
 		
 		double handicap = this.handicap;
 		
-		Double handicapScore = new Double(total - (handicap / 2));
+		Double handicapScore = Double.valueOf(total - (handicap / 2));
 		
 		return handicapScore.toString();
 	}

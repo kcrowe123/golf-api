@@ -31,6 +31,10 @@ public abstract class ValueObject implements Serializable {
         return builder.isEquals();
     }
 
+    /**
+     * @param builder <code>EqualsBuilder</code>
+     * @param obj     <code>Object</code>
+     */
     protected abstract void addFieldsToEqualsBuilder(EqualsBuilder builder, Object obj);
 
     @Override
@@ -42,9 +46,13 @@ public abstract class ValueObject implements Serializable {
 
     /**
      * Override with a non-zero odd number that is unique across the set of Domain Objects.
+     * @return  <code>int</code>
      */
     protected abstract int hashCodeMultiplier();
 
+    /**
+     * @param builder <code>HashCodeBuilder</code>
+     */
     protected abstract void addFieldsToHashCodeBuilder(HashCodeBuilder builder);
 
     @Override
@@ -54,6 +62,9 @@ public abstract class ValueObject implements Serializable {
         return builder.toString();
     }
 
+    /**
+     * @param builder <code>ToStringBuilder</code>
+     */
     protected abstract void addFieldsToToStringBuilder(ToStringBuilder builder);
 
 }

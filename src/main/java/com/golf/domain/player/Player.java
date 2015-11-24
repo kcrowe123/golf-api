@@ -114,7 +114,7 @@ public class Player
 	}
 
 	/**
-	 * The setter method for this Player's suffix
+	 * The setter method for this Player's suffix.
 	 */
 	public void setSuffix(String suffix)
 	{
@@ -128,7 +128,7 @@ public class Player
 	}
 
 	/**
-	 * The setter method for this Player's address
+	 * The setter method for this Player's address.
 	 */
 	public void setAddress(Address address)
 	{
@@ -142,7 +142,7 @@ public class Player
 	}
 
 	/**
-	 * The setter method for this Player's phoneNumber
+	 * The setter method for this Player's phoneNumber.
 	 */
 	public void setPhoneNumber(String phoneNumber)
 	{
@@ -156,7 +156,7 @@ public class Player
 	}
 
 	/**
-	 * The setter method for this Player's emailAddress
+	 * The setter method for this Player's emailAddress.
 	 */
 	public void setEmailAddress(String emailAddress)
 	{

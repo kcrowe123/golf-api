@@ -15,9 +15,9 @@ public abstract class HoleComparator implements Comparator<SkinScorecard>
 	{
 		if(hole.getScore() == 0)
 		{
-			return new Integer(HIGH_NUMBER);
+			return Integer.valueOf(HIGH_NUMBER);
 		}
 		
-		return new Integer(hole.getScore());
+		return Integer.valueOf(hole.getScore());
 	}
 }
