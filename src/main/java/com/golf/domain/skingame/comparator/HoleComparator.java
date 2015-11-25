@@ -13,11 +13,13 @@ public abstract class HoleComparator implements Comparator<SkinScorecard>
 {
 	
 	/** The high number. */
-	private static int HIGH_NUMBER = 9999;
+	private static final int HIGH_NUMBER = 9999;
 	
-	/* (non-Javadoc)
-	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-	 */
+    /**
+     *  @param  o1  <code>SkinScorecard</code>
+     *  @param  o2  <code>SkinScorecard</code>
+     *  @return     <code>int</code> 
+     */
 	public abstract int compare(SkinScorecard o1, SkinScorecard o2);
 	
 	/**
@@ -26,10 +28,8 @@ public abstract class HoleComparator implements Comparator<SkinScorecard>
 	 * @param hole the hole
 	 * @return the score
 	 */
-	protected Integer getScore(Hole hole)
-	{
-		if(hole.getScore() == 0)
-		{
+	protected Integer getScore(Hole hole) {
+		if (hole.getScore() == 0) {
 			return Integer.valueOf(HIGH_NUMBER);
 		}
 		

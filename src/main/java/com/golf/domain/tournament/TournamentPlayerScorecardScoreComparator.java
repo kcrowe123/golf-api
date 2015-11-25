@@ -10,11 +10,13 @@ public class TournamentPlayerScorecardScoreComparator implements Comparator<Tour
 {
 	
 	/** The high number. */
-	private static double HIGH_NUMBER = 9999;
+	private static final int HIGH_NUMBER = 9999;
 	
-	/* (non-Javadoc)
-	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-	 */
+    /**
+     *  @param  o1  <code>TournamentPlayerScorecard</code>
+     *  @param  o2  <code>TournamentPlayerScorecard</code>
+     *  @return     <code>int</code> 
+     */
 	public int compare(TournamentPlayerScorecard o1, TournamentPlayerScorecard o2)
 	{	
 		return getScore(o1).compareTo(getScore(o2));

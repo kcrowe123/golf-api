@@ -1,8 +1,5 @@
 package com.golf.domain.tournament;
 
-import java.util.Iterator;
-
-import com.golf.domain.flight.Flight;
 import com.golf.domain.player.Player;
 import com.golf.domain.scorecard.Scorecard;
 

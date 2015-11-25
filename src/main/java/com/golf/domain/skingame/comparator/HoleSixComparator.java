@@ -10,9 +10,11 @@ import com.golf.domain.skingame.SkinScorecard;
 public class HoleSixComparator extends HoleComparator
 {
 
-	/* (non-Javadoc)
-	 * @see com.golf.domain.skingame.comparator.HoleComparator#compare(com.golf.domain.skingame.SkinScorecard, com.golf.domain.skingame.SkinScorecard)
-	 */
+    /**
+     *  @param  o1  <code>SkinScorecard</code>
+     *  @param  o2  <code>SkinScorecard</code>
+     *  @return     <code>int</code> 
+     */
 	public int compare(SkinScorecard o1, SkinScorecard o2)
 	{
 		return getScore(o1.getSixthHole()).compareTo(getScore(o2.getSixthHole()));

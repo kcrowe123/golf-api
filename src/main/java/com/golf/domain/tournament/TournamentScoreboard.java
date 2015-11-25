@@ -58,7 +58,7 @@ public class TournamentScoreboard
 	 *
 	 * @return the scorecards
 	 */
-	public List getScorecards()
+	public List<TournamentPlayerScorecard> getScorecards()
 	{
 		return scorecards;
 	}
@@ -68,7 +68,7 @@ public class TournamentScoreboard
 	 *
 	 * @param scorecards the new scorecards
 	 */
-	public void setScorecards(List scorecards)
+	public void setScorecards(List<TournamentPlayerScorecard> scorecards)
 	{
 		this.scorecards = scorecards;
 	}
@@ -82,7 +82,7 @@ public class TournamentScoreboard
 	{
 		if (scorecards == null)
 		{
-			scorecards = new ArrayList();
+			scorecards = new ArrayList<TournamentPlayerScorecard>();
 		}
 		
 		scorecards.add(scorecard);

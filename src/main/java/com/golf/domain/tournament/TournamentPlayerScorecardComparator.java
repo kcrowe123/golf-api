@@ -9,9 +9,11 @@ import java.util.Comparator;
 public class TournamentPlayerScorecardComparator implements Comparator<TournamentPlayerScorecard>
 {
 
-	/* (non-Javadoc)
-	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-	 */
+    /**
+     *  @param  o1  <code>TournamentPlayerScorecard</code>
+     *  @param  o2  <code>TournamentPlayerScorecard</code>
+     *  @return     <code>int</code> 
+     */
 	public int compare(TournamentPlayerScorecard o1, TournamentPlayerScorecard o2)
 	{
 		String fullName1 = o1.getPlayer().getFullName();

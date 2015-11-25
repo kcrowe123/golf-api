@@ -13,7 +13,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 public abstract class ValueObject implements Serializable {
 
-    /** The Constant serialVersionUID. */
+    private static final int INITIAL_ODD_NUMBER = 23;
+	/** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
     /* (non-Javadoc)
@@ -49,7 +50,7 @@ public abstract class ValueObject implements Serializable {
      */
     @Override
     public final int hashCode() {
-        HashCodeBuilder builder = new HashCodeBuilder(23, hashCodeMultiplier());
+        HashCodeBuilder builder = new HashCodeBuilder(INITIAL_ODD_NUMBER, hashCodeMultiplier());
         addFieldsToHashCodeBuilder(builder);
         return builder.toHashCode();
     }

@@ -9,9 +9,11 @@ import java.util.Comparator;
 public class SkinGameComparator implements Comparator<SkinGame>
 {
 
-	/* (non-Javadoc)
-	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-	 */
+    /**
+     *  @param  o1  <code>SkinGame</code>
+     *  @param  o2  <code>SkinGame</code>
+     *  @return     <code>int</code> 
+     */
 	public int compare(SkinGame o1, SkinGame o2)
 	{
 		return o1.getSkin().getName().compareTo(o2.getSkin().getName());
