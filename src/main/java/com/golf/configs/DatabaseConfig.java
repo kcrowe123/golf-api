@@ -12,7 +12,10 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class DatabaseConfig.
+ *
  * @author Keith  DatabaseConfig class.
  */
 @Configuration
@@ -52,6 +55,8 @@ public class DatabaseConfig {
   private String ENTITYMANAGER_PACKAGES_TO_SCAN;
   
   /**
+   * Data source.
+   *
    * @return  <code>DataSource</code>
    */
   @Bean
@@ -65,6 +70,8 @@ public class DatabaseConfig {
   }
   
   /**
+   * Session factory.
+   *
    * @return  <code>LocalSessionFactoryBean</code>
    */
   @Bean
@@ -83,6 +90,8 @@ public class DatabaseConfig {
   }
   
   /**
+   * Transaction manager.
+   *
    * @return  <code>HibernateTransactionManager</code>
    */
   @Bean

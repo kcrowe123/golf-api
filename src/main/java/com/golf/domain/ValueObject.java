@@ -7,13 +7,18 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+// TODO: Auto-generated Javadoc
 /**
  * A Domain Object that is not persisted to permanent storage, except as part of Entity objects.
  */
 public abstract class ValueObject implements Serializable {
 
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
     @Override
     public final boolean equals(Object obj) {
         if (obj == null) {
@@ -32,11 +37,16 @@ public abstract class ValueObject implements Serializable {
     }
 
     /**
+     * Adds the fields to equals builder.
+     *
      * @param builder <code>EqualsBuilder</code>
      * @param obj     <code>Object</code>
      */
     protected abstract void addFieldsToEqualsBuilder(EqualsBuilder builder, Object obj);
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
     @Override
     public final int hashCode() {
         HashCodeBuilder builder = new HashCodeBuilder(23, hashCodeMultiplier());
@@ -51,10 +61,15 @@ public abstract class ValueObject implements Serializable {
     protected abstract int hashCodeMultiplier();
 
     /**
+     * Adds the fields to hash code builder.
+     *
      * @param builder <code>HashCodeBuilder</code>
      */
     protected abstract void addFieldsToHashCodeBuilder(HashCodeBuilder builder);
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public final String toString() {
         ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.DEFAULT_STYLE);
@@ -63,6 +78,8 @@ public abstract class ValueObject implements Serializable {
     }
 
     /**
+     * Adds the fields to to string builder.
+     *
      * @param builder <code>ToStringBuilder</code>
      */
     protected abstract void addFieldsToToStringBuilder(ToStringBuilder builder);

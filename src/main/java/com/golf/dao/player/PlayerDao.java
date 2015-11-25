@@ -11,39 +11,75 @@ import org.springframework.stereotype.Repository;
 
 import com.golf.domain.player.Player;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PlayerDao.
+ */
 @Repository
 @Transactional
 public class PlayerDao {
 	
 	
-	  @Autowired
+	  /** The _session factory. */
+  	@Autowired
 	  private SessionFactory _sessionFactory;
 	  
-	  private Session getSession() {
+	  /**
+  	 * Gets the session.
+  	 *
+  	 * @return the session
+  	 */
+  	private Session getSession() {
 	    return _sessionFactory.getCurrentSession();
 	  }
 	  
-	  public void save(Player player) {
+	  /**
+  	 * Save.
+  	 *
+  	 * @param player the player
+  	 */
+  	public void save(Player player) {
 		    getSession().save(player);
 		    return;
 	  }
 		  
-	  public void delete(Player player) {
+	  /**
+  	 * Delete.
+  	 *
+  	 * @param player the player
+  	 */
+  	public void delete(Player player) {
 		    getSession().delete(player);
 		    return;
 	  }
 	  
-	  @SuppressWarnings("unchecked")
+	  /**
+  	 * Gets the all.
+  	 *
+  	 * @return the all
+  	 */
+  	@SuppressWarnings("unchecked")
 	  public List<Player> getAll() {
 	    return getSession().createQuery("from Player").list();
 	  }
 	  
 
-	  public Player getById(long id) {
+	  /**
+  	 * Gets the by id.
+  	 *
+  	 * @param id the id
+  	 * @return the by id
+  	 */
+  	public Player getById(long id) {
 	    return (Player) getSession().load(Player.class, id);
 	  }
 
-	  public void update(Player player) {
+	  /**
+  	 * Update.
+  	 *
+  	 * @param player the player
+  	 */
+  	public void update(Player player) {
 	    getSession().update(player);
 	    return;
 	  }

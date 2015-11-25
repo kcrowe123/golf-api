@@ -11,38 +11,74 @@ import org.springframework.stereotype.Repository;
 
 import com.golf.domain.tournament.Tournament;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TournamentDao.
+ */
 @Repository
 @Transactional
 public class TournamentDao {
 	
-	  @Autowired
+	  /** The _session factory. */
+  	@Autowired
 	  private SessionFactory _sessionFactory;
 	  
-	  private Session getSession() {
+	  /**
+  	 * Gets the session.
+  	 *
+  	 * @return the session
+  	 */
+  	private Session getSession() {
 	    return _sessionFactory.getCurrentSession();
 	  }
 	  
-	  public void save(Tournament tournament) {
+	  /**
+  	 * Save.
+  	 *
+  	 * @param tournament the tournament
+  	 */
+  	public void save(Tournament tournament) {
 		    getSession().save(tournament);
 		    return;
 	  }
 		  
-	  public void delete(Tournament tournament) {
+	  /**
+  	 * Delete.
+  	 *
+  	 * @param tournament the tournament
+  	 */
+  	public void delete(Tournament tournament) {
 		    getSession().delete(tournament);
 		    return;
 	  }
 	  
-	  @SuppressWarnings("unchecked")
+	  /**
+  	 * Gets the all.
+  	 *
+  	 * @return the all
+  	 */
+  	@SuppressWarnings("unchecked")
 	  public List<Tournament> getAll() {
 	    return getSession().createQuery("from Tournament").list();
 	  }
 	  
 
-	  public Tournament getById(long id) {
+	  /**
+  	 * Gets the by id.
+  	 *
+  	 * @param id the id
+  	 * @return the by id
+  	 */
+  	public Tournament getById(long id) {
 	    return (Tournament) getSession().load(Tournament.class, id);
 	  }
 
-	  public void update(Tournament tournament) {
+	  /**
+  	 * Update.
+  	 *
+  	 * @param tournament the tournament
+  	 */
+  	public void update(Tournament tournament) {
 	    getSession().update(tournament);
 	    return;
 	  }

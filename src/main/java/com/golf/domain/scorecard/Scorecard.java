@@ -476,7 +476,7 @@ public class Scorecard
      */
     public Set<Flight> getFlights()
     {
-        if(flights == null)
+        if (flights == null)
         {
             flights = new HashSet<Flight>();
         }

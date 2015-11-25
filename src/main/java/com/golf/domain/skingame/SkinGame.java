@@ -26,14 +26,27 @@ import com.golf.domain.skingame.comparator.HoleThreeComparator;
 import com.golf.domain.skingame.comparator.HoleTwelveComparator;
 import com.golf.domain.skingame.comparator.HoleTwoComparator;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SkinGame.
+ */
 public class SkinGame
 {
+	
+	/** The skin. */
 	private Skins skin;
 	
+	/** The skins out. */
 	private int skinsOut;
 	
+	/** The skin scorecards. */
 	private List<SkinScorecard> skinScorecards;
 	
+	/**
+	 * Instantiates a new skin game.
+	 *
+	 * @param skin the skin
+	 */
 	public SkinGame(Skins skin)
 	{
 		this.skin = skin;
@@ -53,6 +66,9 @@ public class SkinGame
 		}
 	}
 	
+	/**
+	 * Process scorecards.
+	 */
 	private void processScorecards()
 	{
 		processHoleOne();
@@ -76,6 +92,9 @@ public class SkinGame
 		
 	}
 	
+	/**
+	 * Process hole one.
+	 */
 	private void processHoleOne()
 	{
 		Collections.sort(skinScorecards, new HoleOneComparator());
@@ -86,6 +105,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);		
 	}
 	
+	/**
+	 * Process hole two.
+	 */
 	private void processHoleTwo()
 	{
 		Collections.sort(skinScorecards, new HoleTwoComparator());
@@ -96,6 +118,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);		
 	}
 	
+	/**
+	 * Process hole three.
+	 */
 	private void processHoleThree()
 	{
 		Collections.sort(skinScorecards, new HoleThreeComparator());
@@ -106,6 +131,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole four.
+	 */
 	private void processHoleFour()
 	{
 		Collections.sort(skinScorecards, new HoleFourComparator());
@@ -116,6 +144,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole five.
+	 */
 	private void processHoleFive()
 	{
 		Collections.sort(skinScorecards, new HoleFiveComparator());
@@ -126,6 +157,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole six.
+	 */
 	private void processHoleSix()
 	{
 		Collections.sort(skinScorecards, new HoleSixComparator());
@@ -137,6 +171,9 @@ public class SkinGame
 		
 	}
 	
+	/**
+	 * Process hole seven.
+	 */
 	private void processHoleSeven()
 	{
 		Collections.sort(skinScorecards, new HoleSevenComparator());
@@ -148,6 +185,9 @@ public class SkinGame
 		
 	}
 	
+	/**
+	 * Process hole eight.
+	 */
 	private void processHoleEight()
 	{
 		Collections.sort(skinScorecards, new HoleEightComparator());
@@ -158,6 +198,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);		
 	}
 	
+	/**
+	 * Process hole nine.
+	 */
 	private void processHoleNine()
 	{
 		Collections.sort(skinScorecards, new HoleNineComparator());
@@ -168,6 +211,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole ten.
+	 */
 	private void processHoleTen()
 	{
 		Collections.sort(skinScorecards, new HoleTenComparator());
@@ -178,6 +224,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole eleven.
+	 */
 	private void processHoleEleven()
 	{
 		Collections.sort(skinScorecards, new HoleElevenComparator());
@@ -188,6 +237,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole twelve.
+	 */
 	private void processHoleTwelve()
 	{
 		Collections.sort(skinScorecards, new HoleTwelveComparator());
@@ -198,6 +250,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole thirteen.
+	 */
 	private void processHoleThirteen()
 	{
 		Collections.sort(skinScorecards, new HoleThirteenComparator());
@@ -208,6 +263,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole fourteen.
+	 */
 	private void processHoleFourteen()
 	{
 		Collections.sort(skinScorecards, new HoleFourteenComparator());
@@ -218,6 +276,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole fifteen.
+	 */
 	private void processHoleFifteen()
 	{
 		Collections.sort(skinScorecards, new HoleFifteenComparator());
@@ -228,6 +289,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole sixteen.
+	 */
 	private void processHoleSixteen()
 	{
 		Collections.sort(skinScorecards, new HoleSixteenComparator());
@@ -238,6 +302,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole seventeen.
+	 */
 	private void processHoleSeventeen()
 	{
 		Collections.sort(skinScorecards, new HoleSeventeenComparator());
@@ -248,6 +315,9 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 	
+	/**
+	 * Process hole eighteen.
+	 */
 	private void processHoleEighteen()
 	{
 		Collections.sort(skinScorecards, new HoleEighteenComparator());
@@ -258,6 +328,12 @@ public class SkinGame
 		setSkin(scorecard1, scorecard2);	
 	}
 
+	/**
+	 * Sets the skin.
+	 *
+	 * @param scorecard1 the scorecard1
+	 * @param scorecard2 the scorecard2
+	 */
 	private void setSkin(Hole scorecard1, Hole scorecard2)
 	{
 		if (scorecard1.getScore() < scorecard2.getScore())
@@ -268,36 +344,71 @@ public class SkinGame
 		
 	}
 	
+	/**
+	 * Gets the total players.
+	 *
+	 * @return the total players
+	 */
 	public String getTotalPlayers()
 	{
 		return skinScorecards.size() + "";
 	}
 
+	/**
+	 * Gets the skin.
+	 *
+	 * @return the skin
+	 */
 	public Skins getSkin()
 	{
 		return skin;
 	}
 
+	/**
+	 * Sets the skin.
+	 *
+	 * @param skin the new skin
+	 */
 	public void setSkin(Skins skin)
 	{
 		this.skin = skin;
 	}
 
+	/**
+	 * Gets the skins out.
+	 *
+	 * @return the skins out
+	 */
 	public int getSkinsOut()
 	{
 		return skinsOut;
 	}
 
+	/**
+	 * Sets the skins out.
+	 *
+	 * @param skinsOut the new skins out
+	 */
 	public void setSkinsOut(int skinsOut)
 	{
 		this.skinsOut = skinsOut;
 	}
 	
+	/**
+	 * Gets the skin scorecards.
+	 *
+	 * @return the skin scorecards
+	 */
 	public List<SkinScorecard> getSkinScorecards()
 	{
 		return skinScorecards;
 	}
 
+	/**
+	 * Sets the skin scorecards.
+	 *
+	 * @param skinScorecards the new skin scorecards
+	 */
 	public void setSkinScorecards(List<SkinScorecard> skinScorecards)
 	{
 		this.skinScorecards = skinScorecards;
