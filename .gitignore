@@ -7,3 +7,4 @@
 *.lock
 data/elasticsearch/*
 log.txt
+logStart.txt
