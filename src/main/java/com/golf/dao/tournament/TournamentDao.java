@@ -21,7 +21,7 @@ public class TournamentDao {
 	
 	  /** The _session factory. */
   	@Autowired
-	  private SessionFactory _sessionFactory;
+	  private SessionFactory sessionFactory;
 	  
 	  /**
   	 * Gets the session.
@@ -29,7 +29,7 @@ public class TournamentDao {
   	 * @return the session
   	 */
   	private Session getSession() {
-	    return _sessionFactory.getCurrentSession();
+	    return sessionFactory.getCurrentSession();
 	  }
 	  
 	  /**

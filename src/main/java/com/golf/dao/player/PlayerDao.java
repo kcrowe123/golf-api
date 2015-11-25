@@ -22,7 +22,7 @@ public class PlayerDao {
 	
 	  /** The _session factory. */
   	@Autowired
-	  private SessionFactory _sessionFactory;
+	  private SessionFactory sessionFactory;
 	  
 	  /**
   	 * Gets the session.
@@ -30,7 +30,7 @@ public class PlayerDao {
   	 * @return the session
   	 */
   	private Session getSession() {
-	    return _sessionFactory.getCurrentSession();
+	    return sessionFactory.getCurrentSession();
 	  }
 	  
 	  /**
