@@ -29,7 +29,7 @@ import com.golf.domain.tournament.Tournament;
  * This is the domain class for Day.
  */
 @Entity
-@Table(name="DAY")
+@Table(name = "DAY")
 public class Day
 {
     
@@ -48,10 +48,10 @@ public class Day
     @Column(name = "COURSE_NAME")
     private String course;
     
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="day", orphanRemoval=true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "day", orphanRemoval = true)
     private Set<Scorecard> scorecards;
     
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="day", orphanRemoval=true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "day", orphanRemoval = true)
     private Set<Skins> skins;
     
     /**
@@ -148,7 +148,7 @@ public class Day
      */
     public Set<Skins> getSkins()
     {
-        if(skins == null)
+        if (skins == null)
         {
             skins = new HashSet<Skins>();
         }
@@ -170,13 +170,13 @@ public class Day
      */
     public Scorecard getPlayerScorecard(Player player)
     {
-        if(scorecards != null && !scorecards.isEmpty())
+        if (scorecards != null && !scorecards.isEmpty())
         {
             for (Iterator<Scorecard> iterator = scorecards.iterator(); iterator.hasNext();)
             {
                 Scorecard scorecard = (Scorecard) iterator.next();
                 
-                if(scorecard.getPlayer().equals(player))
+                if (scorecard.getPlayer().equals(player))
                 {
                     return scorecard;
                 }
